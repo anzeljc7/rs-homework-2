@@ -62,7 +62,7 @@ board = SimpleBoard(
       
 )
 
-binary = CustomResource("../workload/cholesky/cholesky.bin")
+binary = CustomResource("workload/cholesky/cholesky.bin")
 
 board.set_se_binary_workload(binary)
 
