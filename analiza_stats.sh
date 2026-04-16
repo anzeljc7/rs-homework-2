@@ -1,0 +1,1 @@
+grep -E "board\.processor\.cores[0-9]+\.core\.cpi|clusters[0-9]+\.l1d_cache\.overall(Hits|Misses)::total|l3_bus\.transDist::UpgradeReq|l3_bus\.snoopTraffic" stats.txt
