@@ -24,6 +24,7 @@ parser = argparse.ArgumentParser(description="Configure simulation parameters.")
 parser.add_argument("--num_cores", type=int, default=4, help="Number of CPU cores.")
 parser.add_argument("--l1_size", type=str, default="32KiB", help="L1 cache size.")
 parser.add_argument("--l2_size", type=str, default="256KiB", help="L2 cache size.")
+parser.add_argument("--binary", type=str, required=True)
 
 args = parser.parse_args()
 
@@ -53,7 +54,8 @@ board = SimpleBoard(
     cache_hierarchy=cache_hiearchy,
 )
 
-binary = CustomResource("../workload/parallel_prefix/pprefix_optimized.bin")
+# binary = CustomResource("../workload/parallel_prefix/pprefix_optimized.bin")
+binary = CustomResource(args.binary)
 board.set_se_binary_workload(binary)
 
 simulator = Simulator(board=board)

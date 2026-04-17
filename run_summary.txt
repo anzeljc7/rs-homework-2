@@ -1,0 +1,21 @@
+Run summary
+===========
+Date: Fri Apr 17 07:09:40 PM CEST 2026
+Job ID: 66531575
+Workdir: /d/hpc/home/tb1565/rs-homework-2
+gem5: /d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt
+
+status,binary,cores,outdir,stats_exists
+FAILED,pprefix_falsesharing,2,m5out_pprefix_falsesharing_2cores,NO
+FAILED,pprefix_falsesharing,4,m5out_pprefix_falsesharing_4cores,NO
+FAILED,pprefix_falsesharing,8,m5out_pprefix_falsesharing_8cores,NO
+FAILED,pprefix_falsesharing,16,m5out_pprefix_falsesharing_16cores,NO
+FAILED,pprefix_optimized,2,m5out_pprefix_optimized_2cores,NO
+FAILED,pprefix_optimized,4,m5out_pprefix_optimized_4cores,NO
+FAILED,pprefix_optimized,8,m5out_pprefix_optimized_8cores,NO
+FAILED,pprefix_optimized,16,m5out_pprefix_optimized_16cores,NO
+
+Totals
+------
+Successful runs: 0
+Failed runs: 8
