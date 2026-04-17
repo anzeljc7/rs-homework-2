@@ -1,0 +1,13 @@
+run,topology,cores,Request_Control,Response_Data,Writeback_Data
+m5out_network_crossbar_2cores,crossbar,2,8026,6026501,1500588
+m5out_network_crossbar_4cores,crossbar,4,375915,6032075,1500264
+m5out_network_crossbar_8cores,crossbar,8,582527,6047508,1500276
+m5out_network_crossbar_16cores,crossbar,16,1135712,6077251,1504542
+m5out_network_pt2pt_2cores,point-to-point,2,5652,4017876,1000392
+m5out_network_pt2pt_4cores,point-to-point,4,251502,4022028,1000176
+m5out_network_pt2pt_8cores,point-to-point,8,388894,4033072,1000240
+m5out_network_pt2pt_16cores,point-to-point,16,762708,4054414,1003028
+m5out_network_circle_2cores,ring,2,8412,6469898,1438158
+m5out_network_circle_4cores,ring,4,558745,8363545,2313365
+m5out_network_circle_8cores,ring,8,1226099,12168349,4064752
+m5out_network_circle_16cores,ring,16,3910534,19833090,7583006
