@@ -66,8 +66,18 @@ class MESITwoLevelCacheHierarchy(
     In addition to the normal two level parameters, you can also change the
     number of L2 banks in this protocol.
 
-    The on-chip network is a point-to-point all-to-all simple network.
+    The on-chip network topology is selected via the `network` parameter:
+      - "pt2pt"    : SimplePt2Pt (all-to-all point-to-point)
+      - "circle"   : Circle (ring topology)
+      - "crossbar" : Crossbar (star topology)
     """
+
+    # Mapping of network name strings to network classes
+    _NETWORK_MAP = {
+        "pt2pt":    SimplePt2Pt,
+        "circle":   Circle,
+        "crossbar": Crossbar,
+    }
 
     def __init__(
         self,
@@ -78,6 +88,7 @@ class MESITwoLevelCacheHierarchy(
         l2_size: str,
         l2_assoc: str,
         num_l2_banks: int,
+        network: str = "pt2pt",  # DODANO: izbira topologije omrežja
     ):
         AbstractRubyCacheHierarchy.__init__(self=self)
         AbstractTwoLevelCacheHierarchy.__init__(
@@ -91,6 +102,14 @@ class MESITwoLevelCacheHierarchy(
         )
 
         self._num_l2_banks = num_l2_banks
+
+        # DODANO: validacija in shranjevanje izbrane topologije
+        if network not in self._NETWORK_MAP:
+            raise ValueError(
+                f"Unknown network topology: '{network}'. "
+                f"Choose from: {list(self._NETWORK_MAP.keys())}"
+            )
+        self._network = network
 
     @overrides(AbstractCacheHierarchy)
     def get_coherence_protocol(self):
@@ -106,8 +125,10 @@ class MESITwoLevelCacheHierarchy(
         # MESI_Two_Level needs 3 virtual networks
         self.ruby_system.number_of_virtual_networks = 3
 
-        # Create the network 
-        self.ruby_system.network = SimplePt2Pt(self.ruby_system)
+        # SPREMENJENO: dinamično izberi omrežje glede na self._network
+        # namesto hardkodiranega SimplePt2Pt
+        network_cls = self._NETWORK_MAP[self._network]
+        self.ruby_system.network = network_cls(self.ruby_system)
         self.ruby_system.network.number_of_virtual_networks = 3
 
         # For each core, create an L1 cache and connect it to the core. Also create sequencer for each L1 cache.
@@ -301,7 +322,6 @@ class L1Cache(MESI_Two_Level_L1Cache_Controller):
     
 
 
-
 class L2Cache(MESI_Two_Level_L2Cache_Controller):
 
     _version = 0
@@ -400,5 +420,3 @@ class Directory(MESI_Two_Level_Directory_Controller):
         self.responseFromDir.out_port = network.in_port
         self.requestToMemory = MessageBuffer()
         self.responseFromMemory = MessageBuffer()
-
-
