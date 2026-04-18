@@ -1,0 +1,667 @@
+make: Entering directory '/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix'
+rm -f pprefix_falsesharing.bin pprefix_optimized.bin
+make: Leaving directory '/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix'
+make: Entering directory '/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix'
+riscv64-linux-gnu-gcc -o pprefix_falsesharing.bin pprefix_falsesharing.c -static -fopenmp -lpthread -I/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5//include -L/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5//util/m5/build/riscv/out -I/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5//util/m5/src -lm5 -DGEM5
+/usr/lib/gcc-cross/riscv64-linux-gnu/13/../../../../riscv64-linux-gnu/bin/ld: /usr/lib/gcc-cross/riscv64-linux-gnu/13/libgomp.a(target.o): in function `gomp_load_plugin_for_device':
+(.text+0xd4d2): warning: Using 'dlopen' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+riscv64-linux-gnu-gcc -o pprefix_optimized.bin pprefix_optimized.c -static -fopenmp -lpthread -I/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5//include -L/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5//util/m5/build/riscv/out -I/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5//util/m5/src -lm5 -DGEM5
+/usr/lib/gcc-cross/riscv64-linux-gnu/13/../../../../riscv64-linux-gnu/bin/ld: /usr/lib/gcc-cross/riscv64-linux-gnu/13/libgomp.a(target.o): in function `gomp_load_plugin_for_device':
+(.text+0xd4d2): warning: Using 'dlopen' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+make: Leaving directory '/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix'
+warn: The `CustomResource` class is deprecated. Please use an `AbstractResource` subclass instead.
+Global frequency set at 1000000000000 ticks per second
+src/mem/dram_interface.cc:690: warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (4096 Mbytes)
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/remote_gdb.cc:418: warn: Sockets disabled, not accepting gdb connections
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 25.1.0.0
+gem5 compiled Mar 23 2026 12:51:43
+gem5 started Apr 18 2026 19:05:55
+gem5 executing on wn101.arnes.si, pid 816178
+command line: /d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt --outdir=m5out_pprefix_falsesharing_2cores smp_ruby/ruby_benchmark.py --num_cores=2 --l1_size=32KiB --l2_size=256KiB --binary=/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_falsesharing.bin
+
+info: Standard input is not a terminal, disabling listeners.
+src/mem/ruby/system/Sequencer.cc:707: warn: Replacement policy updates recently became the responsibility of SLICC state machines. Make sure to setMRU() near callbacks in .sm files!
+src/sim/syscall_emul.cc:97: warn: ignoring syscall set_robust_list(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.hh:1127: warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_falsesharing.bin'
+src/sim/mem_state.cc:443: info: Increasing stack size by one page.
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigprocmask(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/power_state.cc:105: warn: PowerState: Already in the requested power state, request ignored
+gem5.opt: src/cpu/simple/timing.cc:246: virtual void gem5::TimingSimpleCPU::suspendContext(gem5::ThreadID): Assertion `_status == BaseSimpleCPU::Running' failed.
+Program aborted at tick 5943987396
+--- BEGIN LIBC BACKTRACE ---
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515print_backtraceEv+0x30)[0x5590988f1bb0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem512abortHandlerEi+0x4c)[0x55909891c98c]
+/lib/x86_64-linux-gnu/libc.so.6(+0x45330)[0x154c6814e330]
+/lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x11c)[0x154c681a7b2c]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x1e)[0x154c6814e27e]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0xdf)[0x154c681318ff]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2881b)[0x154c6813181b]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3b517)[0x154c68144517]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14suspendContextEs+0x415)[0x559099277155]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU11haltContextEs+0x31)[0x55909927a2f1]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x13f7724)[0x5590989d1724]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513exitGroupFuncEPNS_11SyscallDescEPNS_13ThreadContextEi+0x29)[0x5590989d1ab9]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEiEPS6_E9_M_invokeERKSt9_Any_dataOS3_OS5_Oi+0x2e)[0x55909a1c21de]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_13ThreadContextEiEZZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIFS1_PNS0_11SyscallDescES3_EESA_IFS1_SC_S3_DpT_EEENKUlSC_S3_E_clESC_S3_EUlS3_iE_E9_M_invokeERKSt9_Any_dataOS3_Oi+0x58)[0x55909a1c4e68]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513invokeSimcallINS_8RiscvISA8RegABI64ELb0ENS_13SyscallReturnEJiEEET1_PNS_13ThreadContextESt8functionIFS4_S6_DpT2_EE+0xb1)[0x55909a212721]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEEZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIS6_ESC_IFS1_S3_S5_DpT_EEEUlS3_S5_E_E9_M_invokeERKSt9_Any_dataOS3_OS5_+0x111)[0x55909a212961]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem511SyscallDesc9doSyscallEPNS_13ThreadContextE+0x7e)[0x5590989d735e]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA12SyscallFault8invokeSEEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0xf5)[0x55909a172a55]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA10RiscvFault6invokeEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0x380)[0x55909a1736e0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU9advancePCERKSt10shared_ptrINS_9FaultBaseEE+0xd7)[0x55909927bf57]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU11advanceInstERKSt10shared_ptrINS_9FaultBaseEE+0xc0)[0x559099271770]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14completeIfetchEPNS_6PacketE+0x260)[0x559099272470]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem510EventQueue10serviceOneEv+0x155)[0x559098909245]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem59doSimLoopEPNS_10EventQueueE+0x70)[0x559098947b20]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58simulateEm+0x25e)[0x5590989482be]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x341a852)[0x55909a9f4852]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x11a7b9a)[0x559098781b9a]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x1df4b8)[0x154c691984b8]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyObject_Call+0x5c)[0x154c6913d85c]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyEval_EvalFrameDefault+0x8ec)[0x154c690d2dec]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(PyEval_EvalCode+0x20f)[0x154c6925991f]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x29c8b0)[0x154c692558b0]
+--- END LIBC BACKTRACE ---
+For more info on how to address this issue, please visit https://www.gem5.org/documentation/general_docs/common-errors/ 
+
+srun: error: wn101: task 0: Aborted (core dumped)
+warn: The `CustomResource` class is deprecated. Please use an `AbstractResource` subclass instead.
+Global frequency set at 1000000000000 ticks per second
+src/mem/dram_interface.cc:690: warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (4096 Mbytes)
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/remote_gdb.cc:418: warn: Sockets disabled, not accepting gdb connections
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 25.1.0.0
+gem5 compiled Mar 23 2026 12:51:43
+gem5 started Apr 18 2026 19:06:24
+gem5 executing on wn101.arnes.si, pid 816538
+command line: /d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt --outdir=m5out_pprefix_falsesharing_4cores smp_ruby/ruby_benchmark.py --num_cores=4 --l1_size=32KiB --l2_size=256KiB --binary=/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_falsesharing.bin
+
+info: Standard input is not a terminal, disabling listeners.
+src/mem/ruby/system/Sequencer.cc:707: warn: Replacement policy updates recently became the responsibility of SLICC state machines. Make sure to setMRU() near callbacks in .sm files!
+src/sim/syscall_emul.cc:97: warn: ignoring syscall set_robust_list(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.hh:1127: warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_falsesharing.bin'
+src/sim/mem_state.cc:443: info: Increasing stack size by one page.
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigprocmask(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/power_state.cc:105: warn: PowerState: Already in the requested power state, request ignored
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+gem5.opt: src/cpu/simple/timing.cc:246: virtual void gem5::TimingSimpleCPU::suspendContext(gem5::ThreadID): Assertion `_status == BaseSimpleCPU::Running' failed.
+Program aborted at tick 4562044722
+--- BEGIN LIBC BACKTRACE ---
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515print_backtraceEv+0x30)[0x557ffebb8bb0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem512abortHandlerEi+0x4c)[0x557ffebe398c]
+/lib/x86_64-linux-gnu/libc.so.6(+0x45330)[0x14d268483330]
+/lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x11c)[0x14d2684dcb2c]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x1e)[0x14d26848327e]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0xdf)[0x14d2684668ff]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2881b)[0x14d26846681b]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3b517)[0x14d268479517]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14suspendContextEs+0x415)[0x557fff53e155]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU11haltContextEs+0x31)[0x557fff5412f1]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x13f7724)[0x557ffec98724]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513exitGroupFuncEPNS_11SyscallDescEPNS_13ThreadContextEi+0x29)[0x557ffec98ab9]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEiEPS6_E9_M_invokeERKSt9_Any_dataOS3_OS5_Oi+0x2e)[0x5580004891de]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_13ThreadContextEiEZZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIFS1_PNS0_11SyscallDescES3_EESA_IFS1_SC_S3_DpT_EEENKUlSC_S3_E_clESC_S3_EUlS3_iE_E9_M_invokeERKSt9_Any_dataOS3_Oi+0x58)[0x55800048be68]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513invokeSimcallINS_8RiscvISA8RegABI64ELb0ENS_13SyscallReturnEJiEEET1_PNS_13ThreadContextESt8functionIFS4_S6_DpT2_EE+0xb1)[0x5580004d9721]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEEZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIS6_ESC_IFS1_S3_S5_DpT_EEEUlS3_S5_E_E9_M_invokeERKSt9_Any_dataOS3_OS5_+0x111)[0x5580004d9961]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem511SyscallDesc9doSyscallEPNS_13ThreadContextE+0x7e)[0x557ffec9e35e]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA12SyscallFault8invokeSEEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0xf5)[0x558000439a55]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA10RiscvFault6invokeEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0x380)[0x55800043a6e0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU9advancePCERKSt10shared_ptrINS_9FaultBaseEE+0xd7)[0x557fff542f57]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU11advanceInstERKSt10shared_ptrINS_9FaultBaseEE+0xc0)[0x557fff538770]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14completeIfetchEPNS_6PacketE+0x260)[0x557fff539470]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem510EventQueue10serviceOneEv+0x155)[0x557ffebd0245]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem59doSimLoopEPNS_10EventQueueE+0x70)[0x557ffec0eb20]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58simulateEm+0x25e)[0x557ffec0f2be]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x341a852)[0x558000cbb852]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x11a7b9a)[0x557ffea48b9a]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x1df4b8)[0x14d2694cd4b8]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyObject_Call+0x5c)[0x14d26947285c]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyEval_EvalFrameDefault+0x8ec)[0x14d269407dec]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(PyEval_EvalCode+0x20f)[0x14d26958e91f]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x29c8b0)[0x14d26958a8b0]
+--- END LIBC BACKTRACE ---
+For more info on how to address this issue, please visit https://www.gem5.org/documentation/general_docs/common-errors/ 
+
+srun: error: wn101: task 0: Aborted (core dumped)
+warn: The `CustomResource` class is deprecated. Please use an `AbstractResource` subclass instead.
+Global frequency set at 1000000000000 ticks per second
+src/mem/dram_interface.cc:690: warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (4096 Mbytes)
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/remote_gdb.cc:418: warn: Sockets disabled, not accepting gdb connections
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 25.1.0.0
+gem5 compiled Mar 23 2026 12:51:43
+gem5 started Apr 18 2026 19:07:04
+gem5 executing on wn101.arnes.si, pid 816883
+command line: /d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt --outdir=m5out_pprefix_falsesharing_8cores smp_ruby/ruby_benchmark.py --num_cores=8 --l1_size=32KiB --l2_size=256KiB --binary=/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_falsesharing.bin
+
+info: Standard input is not a terminal, disabling listeners.
+src/mem/ruby/system/Sequencer.cc:707: warn: Replacement policy updates recently became the responsibility of SLICC state machines. Make sure to setMRU() near callbacks in .sm files!
+src/sim/syscall_emul.cc:97: warn: ignoring syscall set_robust_list(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.hh:1127: warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_falsesharing.bin'
+src/sim/mem_state.cc:443: info: Increasing stack size by one page.
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigprocmask(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/power_state.cc:105: warn: PowerState: Already in the requested power state, request ignored
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+gem5.opt: src/cpu/simple/timing.cc:246: virtual void gem5::TimingSimpleCPU::suspendContext(gem5::ThreadID): Assertion `_status == BaseSimpleCPU::Running' failed.
+Program aborted at tick 3965188842
+--- BEGIN LIBC BACKTRACE ---
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515print_backtraceEv+0x30)[0x562de623dbb0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem512abortHandlerEi+0x4c)[0x562de626898c]
+/lib/x86_64-linux-gnu/libc.so.6(+0x45330)[0x14c05882b330]
+/lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x11c)[0x14c058884b2c]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x1e)[0x14c05882b27e]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0xdf)[0x14c05880e8ff]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2881b)[0x14c05880e81b]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3b517)[0x14c058821517]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14suspendContextEs+0x415)[0x562de6bc3155]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU11haltContextEs+0x31)[0x562de6bc62f1]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x13f7724)[0x562de631d724]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513exitGroupFuncEPNS_11SyscallDescEPNS_13ThreadContextEi+0x29)[0x562de631dab9]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEiEPS6_E9_M_invokeERKSt9_Any_dataOS3_OS5_Oi+0x2e)[0x562de7b0e1de]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_13ThreadContextEiEZZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIFS1_PNS0_11SyscallDescES3_EESA_IFS1_SC_S3_DpT_EEENKUlSC_S3_E_clESC_S3_EUlS3_iE_E9_M_invokeERKSt9_Any_dataOS3_Oi+0x58)[0x562de7b10e68]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513invokeSimcallINS_8RiscvISA8RegABI64ELb0ENS_13SyscallReturnEJiEEET1_PNS_13ThreadContextESt8functionIFS4_S6_DpT2_EE+0xb1)[0x562de7b5e721]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEEZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIS6_ESC_IFS1_S3_S5_DpT_EEEUlS3_S5_E_E9_M_invokeERKSt9_Any_dataOS3_OS5_+0x111)[0x562de7b5e961]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem511SyscallDesc9doSyscallEPNS_13ThreadContextE+0x7e)[0x562de632335e]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA12SyscallFault8invokeSEEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0xf5)[0x562de7abea55]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA10RiscvFault6invokeEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0x380)[0x562de7abf6e0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU9advancePCERKSt10shared_ptrINS_9FaultBaseEE+0xd7)[0x562de6bc7f57]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU11advanceInstERKSt10shared_ptrINS_9FaultBaseEE+0xc0)[0x562de6bbd770]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14completeIfetchEPNS_6PacketE+0x260)[0x562de6bbe470]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem510EventQueue10serviceOneEv+0x155)[0x562de6255245]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem59doSimLoopEPNS_10EventQueueE+0x70)[0x562de6293b20]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58simulateEm+0x25e)[0x562de62942be]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x341a852)[0x562de8340852]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x11a7b9a)[0x562de60cdb9a]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x1df4b8)[0x14c0598754b8]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyObject_Call+0x5c)[0x14c05981a85c]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyEval_EvalFrameDefault+0x8ec)[0x14c0597afdec]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(PyEval_EvalCode+0x20f)[0x14c05993691f]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x29c8b0)[0x14c0599328b0]
+--- END LIBC BACKTRACE ---
+For more info on how to address this issue, please visit https://www.gem5.org/documentation/general_docs/common-errors/ 
+
+srun: error: wn101: task 0: Aborted (core dumped)
+warn: The `CustomResource` class is deprecated. Please use an `AbstractResource` subclass instead.
+Global frequency set at 1000000000000 ticks per second
+src/mem/dram_interface.cc:690: warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (4096 Mbytes)
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/remote_gdb.cc:418: warn: Sockets disabled, not accepting gdb connections
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 25.1.0.0
+gem5 compiled Mar 23 2026 12:51:43
+gem5 started Apr 18 2026 19:08:07
+gem5 executing on wn101.arnes.si, pid 819229
+command line: /d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt --outdir=m5out_pprefix_falsesharing_16cores smp_ruby/ruby_benchmark.py --num_cores=16 --l1_size=32KiB --l2_size=256KiB --binary=/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_falsesharing.bin
+
+info: Standard input is not a terminal, disabling listeners.
+src/mem/ruby/system/Sequencer.cc:707: warn: Replacement policy updates recently became the responsibility of SLICC state machines. Make sure to setMRU() near callbacks in .sm files!
+src/sim/syscall_emul.cc:97: warn: ignoring syscall set_robust_list(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.hh:1127: warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_falsesharing.bin'
+src/sim/mem_state.cc:443: info: Increasing stack size by one page.
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigprocmask(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/power_state.cc:105: warn: PowerState: Already in the requested power state, request ignored
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+gem5.opt: src/cpu/simple/timing.cc:246: virtual void gem5::TimingSimpleCPU::suspendContext(gem5::ThreadID): Assertion `_status == BaseSimpleCPU::Running' failed.
+Program aborted at tick 3612847536
+--- BEGIN LIBC BACKTRACE ---
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515print_backtraceEv+0x30)[0x558fc7132bb0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem512abortHandlerEi+0x4c)[0x558fc715d98c]
+/lib/x86_64-linux-gnu/libc.so.6(+0x45330)[0x15169db02330]
+/lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x11c)[0x15169db5bb2c]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x1e)[0x15169db0227e]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0xdf)[0x15169dae58ff]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2881b)[0x15169dae581b]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3b517)[0x15169daf8517]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14suspendContextEs+0x415)[0x558fc7ab8155]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU11haltContextEs+0x31)[0x558fc7abb2f1]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x13f7724)[0x558fc7212724]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513exitGroupFuncEPNS_11SyscallDescEPNS_13ThreadContextEi+0x29)[0x558fc7212ab9]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEiEPS6_E9_M_invokeERKSt9_Any_dataOS3_OS5_Oi+0x2e)[0x558fc8a031de]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_13ThreadContextEiEZZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIFS1_PNS0_11SyscallDescES3_EESA_IFS1_SC_S3_DpT_EEENKUlSC_S3_E_clESC_S3_EUlS3_iE_E9_M_invokeERKSt9_Any_dataOS3_Oi+0x58)[0x558fc8a05e68]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513invokeSimcallINS_8RiscvISA8RegABI64ELb0ENS_13SyscallReturnEJiEEET1_PNS_13ThreadContextESt8functionIFS4_S6_DpT2_EE+0xb1)[0x558fc8a53721]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEEZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIS6_ESC_IFS1_S3_S5_DpT_EEEUlS3_S5_E_E9_M_invokeERKSt9_Any_dataOS3_OS5_+0x111)[0x558fc8a53961]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem511SyscallDesc9doSyscallEPNS_13ThreadContextE+0x7e)[0x558fc721835e]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA12SyscallFault8invokeSEEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0xf5)[0x558fc89b3a55]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA10RiscvFault6invokeEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0x380)[0x558fc89b46e0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU9advancePCERKSt10shared_ptrINS_9FaultBaseEE+0xd7)[0x558fc7abcf57]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU11advanceInstERKSt10shared_ptrINS_9FaultBaseEE+0xc0)[0x558fc7ab2770]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14completeIfetchEPNS_6PacketE+0x260)[0x558fc7ab3470]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem510EventQueue10serviceOneEv+0x155)[0x558fc714a245]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem59doSimLoopEPNS_10EventQueueE+0x70)[0x558fc7188b20]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58simulateEm+0x25e)[0x558fc71892be]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x341a852)[0x558fc9235852]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x11a7b9a)[0x558fc6fc2b9a]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x1df4b8)[0x15169eb4c4b8]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyObject_Call+0x5c)[0x15169eaf185c]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyEval_EvalFrameDefault+0x8ec)[0x15169ea86dec]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(PyEval_EvalCode+0x20f)[0x15169ec0d91f]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x29c8b0)[0x15169ec098b0]
+--- END LIBC BACKTRACE ---
+For more info on how to address this issue, please visit https://www.gem5.org/documentation/general_docs/common-errors/ 
+
+srun: error: wn101: task 0: Aborted (core dumped)
+warn: The `CustomResource` class is deprecated. Please use an `AbstractResource` subclass instead.
+Global frequency set at 1000000000000 ticks per second
+src/mem/dram_interface.cc:690: warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (4096 Mbytes)
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/remote_gdb.cc:418: warn: Sockets disabled, not accepting gdb connections
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 25.1.0.0
+gem5 compiled Mar 23 2026 12:51:43
+gem5 started Apr 18 2026 19:09:58
+gem5 executing on wn101.arnes.si, pid 819581
+command line: /d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt --outdir=m5out_pprefix_optimized_2cores smp_ruby/ruby_benchmark.py --num_cores=2 --l1_size=32KiB --l2_size=256KiB --binary=/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_optimized.bin
+
+info: Standard input is not a terminal, disabling listeners.
+src/mem/ruby/system/Sequencer.cc:707: warn: Replacement policy updates recently became the responsibility of SLICC state machines. Make sure to setMRU() near callbacks in .sm files!
+src/sim/syscall_emul.cc:97: warn: ignoring syscall set_robust_list(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.hh:1127: warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_optimized.bin'
+src/sim/mem_state.cc:443: info: Increasing stack size by one page.
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+Running with 2 threads...
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigprocmask(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/power_state.cc:105: warn: PowerState: Already in the requested power state, request ignored
+Time: 2.521 ms
+gem5.opt: src/cpu/simple/timing.cc:246: virtual void gem5::TimingSimpleCPU::suspendContext(gem5::ThreadID): Assertion `_status == BaseSimpleCPU::Running' failed.
+Program aborted at tick 5649368310
+--- BEGIN LIBC BACKTRACE ---
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515print_backtraceEv+0x30)[0x563438606bb0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem512abortHandlerEi+0x4c)[0x56343863198c]
+/lib/x86_64-linux-gnu/libc.so.6(+0x45330)[0x15080409b330]
+/lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x11c)[0x1508040f4b2c]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x1e)[0x15080409b27e]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0xdf)[0x15080407e8ff]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2881b)[0x15080407e81b]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3b517)[0x150804091517]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14suspendContextEs+0x415)[0x563438f8c155]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU11haltContextEs+0x31)[0x563438f8f2f1]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x13f7724)[0x5634386e6724]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513exitGroupFuncEPNS_11SyscallDescEPNS_13ThreadContextEi+0x29)[0x5634386e6ab9]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEiEPS6_E9_M_invokeERKSt9_Any_dataOS3_OS5_Oi+0x2e)[0x563439ed71de]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_13ThreadContextEiEZZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIFS1_PNS0_11SyscallDescES3_EESA_IFS1_SC_S3_DpT_EEENKUlSC_S3_E_clESC_S3_EUlS3_iE_E9_M_invokeERKSt9_Any_dataOS3_Oi+0x58)[0x563439ed9e68]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513invokeSimcallINS_8RiscvISA8RegABI64ELb0ENS_13SyscallReturnEJiEEET1_PNS_13ThreadContextESt8functionIFS4_S6_DpT2_EE+0xb1)[0x563439f27721]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEEZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIS6_ESC_IFS1_S3_S5_DpT_EEEUlS3_S5_E_E9_M_invokeERKSt9_Any_dataOS3_OS5_+0x111)[0x563439f27961]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem511SyscallDesc9doSyscallEPNS_13ThreadContextE+0x7e)[0x5634386ec35e]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA12SyscallFault8invokeSEEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0xf5)[0x563439e87a55]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA10RiscvFault6invokeEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0x380)[0x563439e886e0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU9advancePCERKSt10shared_ptrINS_9FaultBaseEE+0xd7)[0x563438f90f57]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU11advanceInstERKSt10shared_ptrINS_9FaultBaseEE+0xc0)[0x563438f86770]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14completeIfetchEPNS_6PacketE+0x260)[0x563438f87470]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem510EventQueue10serviceOneEv+0x155)[0x56343861e245]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem59doSimLoopEPNS_10EventQueueE+0x70)[0x56343865cb20]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58simulateEm+0x25e)[0x56343865d2be]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x341a852)[0x56343a709852]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x11a7b9a)[0x563438496b9a]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x1df4b8)[0x1508050e54b8]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyObject_Call+0x5c)[0x15080508a85c]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyEval_EvalFrameDefault+0x8ec)[0x15080501fdec]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(PyEval_EvalCode+0x20f)[0x1508051a691f]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x29c8b0)[0x1508051a28b0]
+--- END LIBC BACKTRACE ---
+For more info on how to address this issue, please visit https://www.gem5.org/documentation/general_docs/common-errors/ 
+
+srun: error: wn101: task 0: Aborted (core dumped)
+warn: The `CustomResource` class is deprecated. Please use an `AbstractResource` subclass instead.
+Global frequency set at 1000000000000 ticks per second
+src/mem/dram_interface.cc:690: warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (4096 Mbytes)
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/remote_gdb.cc:418: warn: Sockets disabled, not accepting gdb connections
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 25.1.0.0
+gem5 compiled Mar 23 2026 12:51:43
+gem5 started Apr 18 2026 19:10:26
+gem5 executing on wn101.arnes.si, pid 819962
+command line: /d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt --outdir=m5out_pprefix_optimized_4cores smp_ruby/ruby_benchmark.py --num_cores=4 --l1_size=32KiB --l2_size=256KiB --binary=/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_optimized.bin
+
+info: Standard input is not a terminal, disabling listeners.
+src/mem/ruby/system/Sequencer.cc:707: warn: Replacement policy updates recently became the responsibility of SLICC state machines. Make sure to setMRU() near callbacks in .sm files!
+src/sim/syscall_emul.cc:97: warn: ignoring syscall set_robust_list(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.hh:1127: warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_optimized.bin'
+src/sim/mem_state.cc:443: info: Increasing stack size by one page.
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+Running with 4 threads...
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigprocmask(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/power_state.cc:105: warn: PowerState: Already in the requested power state, request ignored
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+Time: 1.303 ms
+gem5.opt: src/cpu/simple/timing.cc:246: virtual void gem5::TimingSimpleCPU::suspendContext(gem5::ThreadID): Assertion `_status == BaseSimpleCPU::Running' failed.
+Program aborted at tick 4414805775
+--- BEGIN LIBC BACKTRACE ---
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515print_backtraceEv+0x30)[0x5583115d5bb0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem512abortHandlerEi+0x4c)[0x55831160098c]
+/lib/x86_64-linux-gnu/libc.so.6(+0x45330)[0x14841c276330]
+/lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x11c)[0x14841c2cfb2c]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x1e)[0x14841c27627e]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0xdf)[0x14841c2598ff]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2881b)[0x14841c25981b]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3b517)[0x14841c26c517]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14suspendContextEs+0x415)[0x558311f5b155]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU11haltContextEs+0x31)[0x558311f5e2f1]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x13f7724)[0x5583116b5724]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513exitGroupFuncEPNS_11SyscallDescEPNS_13ThreadContextEi+0x29)[0x5583116b5ab9]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEiEPS6_E9_M_invokeERKSt9_Any_dataOS3_OS5_Oi+0x2e)[0x558312ea61de]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_13ThreadContextEiEZZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIFS1_PNS0_11SyscallDescES3_EESA_IFS1_SC_S3_DpT_EEENKUlSC_S3_E_clESC_S3_EUlS3_iE_E9_M_invokeERKSt9_Any_dataOS3_Oi+0x58)[0x558312ea8e68]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513invokeSimcallINS_8RiscvISA8RegABI64ELb0ENS_13SyscallReturnEJiEEET1_PNS_13ThreadContextESt8functionIFS4_S6_DpT2_EE+0xb1)[0x558312ef6721]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEEZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIS6_ESC_IFS1_S3_S5_DpT_EEEUlS3_S5_E_E9_M_invokeERKSt9_Any_dataOS3_OS5_+0x111)[0x558312ef6961]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem511SyscallDesc9doSyscallEPNS_13ThreadContextE+0x7e)[0x5583116bb35e]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA12SyscallFault8invokeSEEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0xf5)[0x558312e56a55]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA10RiscvFault6invokeEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0x380)[0x558312e576e0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU9advancePCERKSt10shared_ptrINS_9FaultBaseEE+0xd7)[0x558311f5ff57]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU11advanceInstERKSt10shared_ptrINS_9FaultBaseEE+0xc0)[0x558311f55770]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14completeIfetchEPNS_6PacketE+0x260)[0x558311f56470]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem510EventQueue10serviceOneEv+0x155)[0x5583115ed245]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem59doSimLoopEPNS_10EventQueueE+0x70)[0x55831162bb20]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58simulateEm+0x25e)[0x55831162c2be]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x341a852)[0x5583136d8852]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x11a7b9a)[0x558311465b9a]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x1df4b8)[0x14841d2c04b8]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyObject_Call+0x5c)[0x14841d26585c]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyEval_EvalFrameDefault+0x8ec)[0x14841d1fadec]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(PyEval_EvalCode+0x20f)[0x14841d38191f]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x29c8b0)[0x14841d37d8b0]
+--- END LIBC BACKTRACE ---
+For more info on how to address this issue, please visit https://www.gem5.org/documentation/general_docs/common-errors/ 
+
+srun: error: wn101: task 0: Aborted (core dumped)
+warn: The `CustomResource` class is deprecated. Please use an `AbstractResource` subclass instead.
+Global frequency set at 1000000000000 ticks per second
+src/mem/dram_interface.cc:690: warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (4096 Mbytes)
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/remote_gdb.cc:418: warn: Sockets disabled, not accepting gdb connections
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 25.1.0.0
+gem5 compiled Mar 23 2026 12:51:43
+gem5 started Apr 18 2026 19:11:04
+gem5 executing on wn101.arnes.si, pid 820311
+command line: /d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt --outdir=m5out_pprefix_optimized_8cores smp_ruby/ruby_benchmark.py --num_cores=8 --l1_size=32KiB --l2_size=256KiB --binary=/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_optimized.bin
+
+info: Standard input is not a terminal, disabling listeners.
+src/mem/ruby/system/Sequencer.cc:707: warn: Replacement policy updates recently became the responsibility of SLICC state machines. Make sure to setMRU() near callbacks in .sm files!
+src/sim/syscall_emul.cc:97: warn: ignoring syscall set_robust_list(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.hh:1127: warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_optimized.bin'
+src/sim/mem_state.cc:443: info: Increasing stack size by one page.
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+Running with 8 threads...
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigprocmask(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/power_state.cc:105: warn: PowerState: Already in the requested power state, request ignored
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+Time: 0.702 ms
+gem5.opt: src/cpu/simple/timing.cc:246: virtual void gem5::TimingSimpleCPU::suspendContext(gem5::ThreadID): Assertion `_status == BaseSimpleCPU::Running' failed.
+Program aborted at tick 3799348848
+--- BEGIN LIBC BACKTRACE ---
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515print_backtraceEv+0x30)[0x560f69969bb0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem512abortHandlerEi+0x4c)[0x560f6999498c]
+/lib/x86_64-linux-gnu/libc.so.6(+0x45330)[0x14bb9e516330]
+/lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x11c)[0x14bb9e56fb2c]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x1e)[0x14bb9e51627e]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0xdf)[0x14bb9e4f98ff]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2881b)[0x14bb9e4f981b]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3b517)[0x14bb9e50c517]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14suspendContextEs+0x415)[0x560f6a2ef155]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU11haltContextEs+0x31)[0x560f6a2f22f1]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x13f7724)[0x560f69a49724]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513exitGroupFuncEPNS_11SyscallDescEPNS_13ThreadContextEi+0x29)[0x560f69a49ab9]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEiEPS6_E9_M_invokeERKSt9_Any_dataOS3_OS5_Oi+0x2e)[0x560f6b23a1de]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_13ThreadContextEiEZZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIFS1_PNS0_11SyscallDescES3_EESA_IFS1_SC_S3_DpT_EEENKUlSC_S3_E_clESC_S3_EUlS3_iE_E9_M_invokeERKSt9_Any_dataOS3_Oi+0x58)[0x560f6b23ce68]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513invokeSimcallINS_8RiscvISA8RegABI64ELb0ENS_13SyscallReturnEJiEEET1_PNS_13ThreadContextESt8functionIFS4_S6_DpT2_EE+0xb1)[0x560f6b28a721]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEEZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIS6_ESC_IFS1_S3_S5_DpT_EEEUlS3_S5_E_E9_M_invokeERKSt9_Any_dataOS3_OS5_+0x111)[0x560f6b28a961]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem511SyscallDesc9doSyscallEPNS_13ThreadContextE+0x7e)[0x560f69a4f35e]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA12SyscallFault8invokeSEEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0xf5)[0x560f6b1eaa55]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA10RiscvFault6invokeEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0x380)[0x560f6b1eb6e0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU9advancePCERKSt10shared_ptrINS_9FaultBaseEE+0xd7)[0x560f6a2f3f57]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU11advanceInstERKSt10shared_ptrINS_9FaultBaseEE+0xc0)[0x560f6a2e9770]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14completeIfetchEPNS_6PacketE+0x260)[0x560f6a2ea470]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem510EventQueue10serviceOneEv+0x155)[0x560f69981245]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem59doSimLoopEPNS_10EventQueueE+0x70)[0x560f699bfb20]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58simulateEm+0x25e)[0x560f699c02be]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x341a852)[0x560f6ba6c852]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x11a7b9a)[0x560f697f9b9a]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x1df4b8)[0x14bb9f5604b8]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyObject_Call+0x5c)[0x14bb9f50585c]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyEval_EvalFrameDefault+0x8ec)[0x14bb9f49adec]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(PyEval_EvalCode+0x20f)[0x14bb9f62191f]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x29c8b0)[0x14bb9f61d8b0]
+--- END LIBC BACKTRACE ---
+For more info on how to address this issue, please visit https://www.gem5.org/documentation/general_docs/common-errors/ 
+
+srun: error: wn101: task 0: Aborted (core dumped)
+warn: The `CustomResource` class is deprecated. Please use an `AbstractResource` subclass instead.
+Global frequency set at 1000000000000 ticks per second
+src/mem/dram_interface.cc:690: warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (4096 Mbytes)
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/arch/riscv/isa.cc:321: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/remote_gdb.cc:418: warn: Sockets disabled, not accepting gdb connections
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 25.1.0.0
+gem5 compiled Mar 23 2026 12:51:43
+gem5 started Apr 18 2026 19:12:03
+gem5 executing on wn101.arnes.si, pid 820658
+command line: /d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt --outdir=m5out_pprefix_optimized_16cores smp_ruby/ruby_benchmark.py --num_cores=16 --l1_size=32KiB --l2_size=256KiB --binary=/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_optimized.bin
+
+info: Standard input is not a terminal, disabling listeners.
+src/mem/ruby/system/Sequencer.cc:707: warn: Replacement policy updates recently became the responsibility of SLICC state machines. Make sure to setMRU() near callbacks in .sm files!
+src/sim/syscall_emul.cc:97: warn: ignoring syscall set_robust_list(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.hh:1127: warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/d/hpc/home/tb1565/rs-homework-2/workload/parallel_prefix/pprefix_optimized.bin'
+src/sim/mem_state.cc:443: info: Increasing stack size by one page.
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+Running with 16 threads...
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigprocmask(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/power_state.cc:105: warn: PowerState: Already in the requested power state, request ignored
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+Time: 0.426 ms
+gem5.opt: src/cpu/simple/timing.cc:246: virtual void gem5::TimingSimpleCPU::suspendContext(gem5::ThreadID): Assertion `_status == BaseSimpleCPU::Running' failed.
+Program aborted at tick 3503633859
+--- BEGIN LIBC BACKTRACE ---
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515print_backtraceEv+0x30)[0x55b8f6219bb0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem512abortHandlerEi+0x4c)[0x55b8f624498c]
+/lib/x86_64-linux-gnu/libc.so.6(+0x45330)[0x147245452330]
+/lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x11c)[0x1472454abb2c]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x1e)[0x14724545227e]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0xdf)[0x1472454358ff]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2881b)[0x14724543581b]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3b517)[0x147245448517]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14suspendContextEs+0x415)[0x55b8f6b9f155]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU11haltContextEs+0x31)[0x55b8f6ba22f1]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x13f7724)[0x55b8f62f9724]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513exitGroupFuncEPNS_11SyscallDescEPNS_13ThreadContextEi+0x29)[0x55b8f62f9ab9]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEiEPS6_E9_M_invokeERKSt9_Any_dataOS3_OS5_Oi+0x2e)[0x55b8f7aea1de]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_13ThreadContextEiEZZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIFS1_PNS0_11SyscallDescES3_EESA_IFS1_SC_S3_DpT_EEENKUlSC_S3_E_clESC_S3_EUlS3_iE_E9_M_invokeERKSt9_Any_dataOS3_Oi+0x58)[0x55b8f7aece68]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513invokeSimcallINS_8RiscvISA8RegABI64ELb0ENS_13SyscallReturnEJiEEET1_PNS_13ThreadContextESt8functionIFS4_S6_DpT2_EE+0xb1)[0x55b8f7b3a721]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZNSt17_Function_handlerIFN4gem513SyscallReturnEPNS0_11SyscallDescEPNS0_13ThreadContextEEZNS0_14SyscallDescABIINS0_8RiscvISA8RegABI64EE13buildExecutorIJiEEESt8functionIS6_ESC_IFS1_S3_S5_DpT_EEEUlS3_S5_E_E9_M_invokeERKSt9_Any_dataOS3_OS5_+0x111)[0x55b8f7b3a961]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem511SyscallDesc9doSyscallEPNS_13ThreadContextE+0x7e)[0x55b8f62ff35e]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA12SyscallFault8invokeSEEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0xf5)[0x55b8f7a9aa55]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58RiscvISA10RiscvFault6invokeEPNS_13ThreadContextERKNS_14RefCountingPtrINS_10StaticInstEEE+0x380)[0x55b8f7a9b6e0]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem513BaseSimpleCPU9advancePCERKSt10shared_ptrINS_9FaultBaseEE+0xd7)[0x55b8f6ba3f57]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU11advanceInstERKSt10shared_ptrINS_9FaultBaseEE+0xc0)[0x55b8f6b99770]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem515TimingSimpleCPU14completeIfetchEPNS_6PacketE+0x260)[0x55b8f6b9a470]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem510EventQueue10serviceOneEv+0x155)[0x55b8f6231245]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem59doSimLoopEPNS_10EventQueueE+0x70)[0x55b8f626fb20]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(_ZN4gem58simulateEm+0x25e)[0x55b8f62702be]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x341a852)[0x55b8f831c852]
+/d/hpc/projects/FRI/GEM5/gem5_workspace/gem5/build/RISCV_ALL_RUBY/gem5.opt(+0x11a7b9a)[0x55b8f60a9b9a]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x1df4b8)[0x14724649c4b8]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyObject_Call+0x5c)[0x14724644185c]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(_PyEval_EvalFrameDefault+0x8ec)[0x1472463d6dec]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(PyEval_EvalCode+0x20f)[0x14724655d91f]
+/lib/x86_64-linux-gnu/libpython3.12.so.1.0(+0x29c8b0)[0x1472465598b0]
+--- END LIBC BACKTRACE ---
+For more info on how to address this issue, please visit https://www.gem5.org/documentation/general_docs/common-errors/ 
+
+srun: error: wn101: task 0: Aborted (core dumped)
